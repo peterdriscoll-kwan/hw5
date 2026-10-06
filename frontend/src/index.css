@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=Caveat:wght@600&display=swap");
+
+:root {
+  --walnut-dark: #241811;
+  --walnut: #3a2819;
+  --walnut-light: #6b4a30;
+  --brass: #b08d57;
+  --brass-light: #e0c389;
+  --parchment: #f6ecd9;
+  --parchment-dark: #ead9ba;
+  --leather: #5c1f1f;
+  --leather-dark: #3d1414;
+  --ledger: #eef2e8;
+  --ledger-line: #c9d3bd;
+  --ink: #2c2317;
+  --gold: #c9a227;
+  --navy: #1e3a6e;
+  --forest: #2f5538;
+
+  font-family: "Inter", system-ui, sans-serif;
+  color: var(--ink);
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+h1, h2, h3 {
+  font-family: "Fraunces", Georgia, serif;
+  margin: 0;
+}
+
+code {
+  font-family: ui-monospace, "SF Mono", Consolas, monospace;
+  background: rgba(0, 0, 0, 0.06);
+  border-radius: 3px;
+  padding: 1px 5px;
+  font-size: 0.85em;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+input, select {
+  font-family: inherit;
+}

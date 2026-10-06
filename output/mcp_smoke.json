@@ -1,0 +1,71 @@
+{
+  "mcp_server": "campus-customs-ops",
+  "transport": "stdio (via .mcp.json at project root)",
+  "database_checked_against": "data/campus_customs_new.db",
+  "tests": [
+    {
+      "prompt_asked_of_vibe_coder": "Run the invoice-status tool for invoice 501 (the invoice tied to ticket 101) and confirm it reports the invoice as open and overdue.",
+      "tool_name": "mcp__campus-customs-ops__get_invoice_status",
+      "tool_input": { "invoice_id": 501 },
+      "tool_output": {
+        "invoice_id": 501,
+        "found": true,
+        "amount": 840,
+        "due_date": "2026-08-28",
+        "status": "open",
+        "description": "Rush reprint CC-TEE-WHITE S",
+        "vendor_id": 1,
+        "vendor_name": "Bulldog Print Co",
+        "vendor_specialty": "apparel reprint",
+        "vendor_lead_days": 5,
+        "blocks_vendor_shipping": true,
+        "overdue": true,
+        "today": "2026-08-31"
+      },
+      "matches_database": "Yes — invoices.id=501: amount 840.0, due_date 2026-08-28, status 'open', vendor_id 1; vendors.id=1: name 'Bulldog Print Co', specialty 'apparel reprint', lead_days 5; desk.date_today 2026-08-31."
+    },
+    {
+      "prompt_asked_of_vibe_coder": "Run the lease-and-cash tool for lease 1 (the lease tied to ticket 102) and confirm it reports the correct days until rent is due and whether cash covers it.",
+      "tool_name": "mcp__campus-customs-ops__get_lease_and_cash_status",
+      "tool_input": { "lease_id": 1 },
+      "tool_output": {
+        "lease_id": 1,
+        "found": true,
+        "space_name": "Chapel Street shop",
+        "landlord": "Elm City Properties",
+        "monthly_rent": 2400,
+        "next_due": "2026-09-02",
+        "days_until_due": 2,
+        "today": "2026-08-31",
+        "cash_account": "checking",
+        "cash_balance": 3400,
+        "cash_covers_rent": true
+      },
+      "matches_database": "Yes — leases.id=1: space_name 'Chapel Street shop', landlord 'Elm City Properties', monthly_rent 2400.0, next_due 2026-09-02; cash_accounts: name 'checking', balance 3400.0; desk.date_today 2026-08-31 (2026-09-02 minus 2026-08-31 = 2 days)."
+    },
+    {
+      "prompt_asked_of_vibe_coder": "Run the stock-and-restock tool for CC-HOOD-NAVY size M against a requested quantity of 20 (ticket 103's bulk discount request) and confirm the shortfall and margin are computed correctly.",
+      "tool_name": "mcp__campus-customs-ops__check_stock_and_restock_options",
+      "tool_input": { "sku": "CC-HOOD-NAVY", "size": "M", "requested_qty": 20 },
+      "tool_output": {
+        "sku": "CC-HOOD-NAVY",
+        "product_name": "Basic Hoodie Big Yale",
+        "size": "M",
+        "location": "Aisle A",
+        "found": true,
+        "qty_on_hand": 8,
+        "requested_qty": 20,
+        "shortfall": 12,
+        "unit_cost": 22,
+        "list_price": 58,
+        "margin_per_unit": 36,
+        "vendors": [
+          { "id": 1, "name": "Bulldog Print Co", "specialty": "apparel reprint", "lead_days": 5 },
+          { "id": 2, "name": "Elm City Gifts", "specialty": "mugs and small goods", "lead_days": 3 },
+          { "id": 3, "name": "QuickShip CT", "specialty": "local courier", "lead_days": 1 }
+        ]
+      },
+      "matches_database": "Yes — inventory row (sku='CC-HOOD-NAVY', size='M'): qty 8, location 'Aisle A'; pricing row (sku='CC-HOOD-NAVY'): unit_cost 22.0, list_price 58.0 (margin 36.0 = 58.0-22.0); shortfall 12 = 20 requested - 8 on hand; vendors table returned in full (3 rows, matching ids/specialties/lead_days)."
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "starting_checking_balance": 3400.00,
+  "ending_checking_balance": 160.00,
+  "tickets": [
+    {
+      "id": 101,
+      "type": "customer_order",
+      "final_status": "resolved",
+      "outcome_summary": "Tauhid Zaman's size-S CC-TEE-WHITE tee was out of stock (0 on hand). Invoice 501 ($840, owed to Bulldog Print Co) was blocking that vendor from shipping a reprint; a human approved and paid it, which unblocked the vendor. The tee itself is still physically out of stock — no tool in this system can confirm a vendor shipment's arrival — so the ticket was resolved on the honest basis that the team's own work (clearing the invoice, giving the customer an accurate status) is complete, while the vendor's independent restock/ship timeline (5 days) is noted but not promised.",
+      "agent_contributions": [
+        {
+          "agent": "boss",
+          "persona": "Handsome Dan",
+          "contribution": "Pulled the ticket, delegated to Inventory, Accounting, and Customer Service, then finalized the ticket as resolved once all three confirmed there was nothing further the team itself could do.",
+          "tools_used": ["get_ticket", "delegate", "update_ticket"]
+        },
+        {
+          "agent": "inventory",
+          "persona": "Sterling",
+          "contribution": "Confirmed CC-TEE-WHITE size S is still at 0 on hand (shortfall of 1) and identified Bulldog Print Co (apparel reprint, 5-day lead time) as the matching vendor.",
+          "tools_used": ["get_ticket", "check_stock_and_restock_options", "get_invoice_status", "update_ticket"]
+        },
+        {
+          "agent": "accounting",
+          "persona": "Ledger",
+          "contribution": "Confirmed invoice 501 is paid ($840) and no longer blocks vendor shipping; confirmed no further payment or approval is needed.",
+          "tools_used": ["get_ticket", "get_invoice_status", "get_cash_balance", "update_ticket"]
+        },
+        {
+          "agent": "customer_service",
+          "persona": "Clark",
+          "contribution": "Drafted (not sent) an honest customer-facing note explaining the tee is out of stock, the blocking invoice is now paid, and the vendor's 5-day lead time is an estimate, not a delivery promise.",
+          "tools_used": ["get_ticket", "update_ticket"]
+        }
+      ],
+      "human_approvals": [
+        {
+          "kind": "invoice",
+          "ref_id": 501,
+          "amount": 840.00,
+          "approved_by": "Peter Driscoll-Kwan",
+          "result": "Paid. Invoice 501 status flipped to paid; checking balance 3400.00 -> 2560.00."
+        }
+      ]
+    },
+    {
+      "id": 102,
+      "type": "rent_notice",
+      "final_status": "resolved",
+      "outcome_summary": "Chapel Street shop rent ($2,400, due 2026-09-02) was confirmed affordable and a human approved and paid it in full. On a later re-check, Accounting/Facilities correctly recognized (via the lease's own real payment history, not a guess) that this rent was already paid, rather than mistakenly treating the now-lower cash balance as a new shortfall.",
+      "agent_contributions": [
+        {
+          "agent": "boss",
+          "persona": "Handsome Dan",
+          "contribution": "Pulled the ticket, delegated to Facilities and Accounting, then finalized the ticket as resolved once both confirmed the rent payment was already on record.",
+          "tools_used": ["get_ticket", "delegate", "update_ticket"]
+        },
+        {
+          "agent": "facilities",
+          "persona": "Harkness",
+          "contribution": "Verified lease 1's rent ($2,400, due 2026-09-02) and, on the final check, confirmed a real recorded payment already covers it.",
+          "tools_used": ["get_ticket", "get_lease_and_cash_status", "update_ticket"]
+        },
+        {
+          "agent": "accounting",
+          "persona": "Ledger",
+          "contribution": "Cross-checked the live cash balance against the lease's payment history and confirmed rent is paid, so no further payment or approval is needed.",
+          "tools_used": ["get_ticket", "get_lease_and_cash_status", "update_ticket"]
+        }
+      ],
+      "human_approvals": [
+        {
+          "kind": "lease",
+          "ref_id": 1,
+          "amount": 2400.00,
+          "approved_by": "Peter Driscoll-Kwan",
+          "result": "Paid. Checking balance 2560.00 -> 160.00."
+        }
+      ]
+    },
+    {
+      "id": 103,
+      "type": "price_override",
+      "final_status": "resolved",
+      "outcome_summary": "The Yale AI Club asked for 20 CC-HOOD-NAVY hoodies (size M) at a bulk discount, but only 8 were in stock (12 short). Accounting recommended a 10% discount ($52.20/unit, $30.20 margin/unit) as an affordable, specific option. A human reviewed that recommendation and approved the discount only for the 8 units actually in stock, explicitly declining to promise the unconfirmed remaining 12. The team then drafted an honest customer response reflecting exactly that scope.",
+      "agent_contributions": [
+        {
+          "agent": "boss",
+          "persona": "Handsome Dan",
+          "contribution": "Pulled the ticket, delegated to Inventory and Accounting for the initial assessment, then (after the human's decision was recorded) delegated to Customer Service to finalize and marked the ticket resolved.",
+          "tools_used": ["get_ticket", "delegate", "update_ticket"]
+        },
+        {
+          "agent": "inventory",
+          "persona": "Sterling",
+          "contribution": "Confirmed 8 CC-HOOD-NAVY hoodies (size M) on hand against 20 requested (shortfall of 12) and identified Bulldog Print Co's 5-day lead time, without promising the shortfall.",
+          "tools_used": ["get_ticket", "check_stock_and_restock_options", "update_ticket"]
+        },
+        {
+          "agent": "accounting",
+          "persona": "Ledger",
+          "contribution": "Computed the real margin ($36/unit at list, $30.20/unit at a 10% discount) and recommended a specific 10% discount for human review, explicitly not approving it itself.",
+          "tools_used": ["get_ticket", "check_stock_and_restock_options", "get_cash_balance", "update_ticket"]
+        },
+        {
+          "agent": "customer_service",
+          "persona": "Clark",
+          "contribution": "Drafted (not sent) a response to the Yale AI Club offering exactly the 8 in-stock hoodies at the approved $52.20 price, explicitly not promising the other 12.",
+          "tools_used": ["get_ticket", "update_ticket"]
+        }
+      ],
+      "human_approvals": [
+        {
+          "kind": "price_override",
+          "ref_id": null,
+          "amount": null,
+          "approved_by": "Peter Driscoll-Kwan",
+          "result": "Approved a 10% discount ($52.20/unit) on the 8 in-stock hoodies only; no payment tool involved — a price override has no execution tool, so the human's decision was recorded directly on the ticket (the same kind of direct, human-only control-plane action as approving a payment)."
+        }
+      ]
+    }
+  ]
+}

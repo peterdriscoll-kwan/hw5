@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Campus Customs — Resolved Tickets</title>
+<style>
+  :root {
+    --navy: #0b1f3a;
+    --blue: #1e3a6e;
+    --gold: #c9a227;
+    --forest: #2f5538;
+    --paper: #f7f8fa;
+    --ink: #1b2430;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Georgia", "Times New Roman", serif;
+    background: var(--paper);
+    color: var(--ink);
+  }
+  header {
+    background: linear-gradient(135deg, var(--navy), var(--blue));
+    color: #fff;
+    padding: 28px 36px;
+    border-bottom: 4px solid var(--gold);
+  }
+  header h1 { margin: 0 0 4px 0; font-size: 1.7rem; }
+  header p { margin: 0; color: #c7ccd4; font-family: Arial, sans-serif; font-size: 0.92rem; }
+  main { max-width: 1040px; margin: 0 auto; padding: 32px 36px 60px; }
+  .ticket-section {
+    background: #fff;
+    border: 1px solid #dfe3ea;
+    border-left: 6px solid var(--forest);
+    border-radius: 8px;
+    padding: 22px 26px;
+    margin-bottom: 32px;
+    font-family: Arial, sans-serif;
+  }
+  .ticket-section h2 {
+    font-family: Georgia, serif;
+    color: var(--navy);
+    margin: 0 0 4px 0;
+    font-size: 1.3rem;
+  }
+  .status-pill {
+    display: inline-block;
+    background: var(--forest);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 10px;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+  .ticket-section .caption {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: #3a3226;
+    margin: 12px 0 18px 0;
+  }
+  .ticket-section img {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #dfe3ea;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    display: block;
+  }
+  .meta-line { font-size: 0.82rem; color: #6a7589; margin-top: 10px; }
+  code {
+    background: #eef1f6;
+    border: 1px solid #dde1e9;
+    border-radius: 3px;
+    padding: 1px 5px;
+    font-size: 0.88em;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Campus Customs — Resolved Tickets</h1>
+  <p>Problem 9: real screenshots of the React dashboard after the agent team resolved all three open tickets.</p>
+</header>
+
+<main>
+
+  <div class="ticket-section">
+    <h2>Ticket 101 — Bulldog tee <span class="status-pill">Resolved</span></h2>
+    <p class="caption">
+      The size-S <code>CC-TEE-WHITE</code> tee was out of stock, blocked by an overdue
+      $840 vendor invoice. A human approved and paid the invoice through the dashboard,
+      unblocking Bulldog Print Co. The tee itself is still physically out of stock —
+      no tool here can confirm a vendor shipment's arrival — so the ticket was marked
+      resolved on the honest basis that the team finished every action within its own
+      control (clearing the invoice, giving the customer an accurate status), not by
+      inventing a delivery that never happened.
+    </p>
+    <img src="resolved_board_images/ticket_101.png" alt="Dashboard showing ticket 101 resolved, with Clark, Ledger, and Sterling's summary cards">
+    <div class="meta-line">Final checking balance shown: $160.00 — all three tickets already resolved by this point.</div>
+  </div>
+
+  <div class="ticket-section">
+    <h2>Ticket 102 — Rent due <span class="status-pill">Resolved</span></h2>
+    <p class="caption">
+      Chapel Street shop's $2,400 rent (due in 2 days) was confirmed affordable and a
+      human approved and paid it in full through the dashboard. On a later check, the
+      team correctly recognized — from a real recorded payment, not a guess — that this
+      rent was already paid, rather than mistaking the now-lower cash balance for a new
+      shortfall.
+    </p>
+    <img src="resolved_board_images/ticket_102.png" alt="Dashboard showing ticket 102 resolved, with Ledger and Harkness's summary cards">
+  </div>
+
+  <div class="ticket-section">
+    <h2>Ticket 103 — Bulk hoodie discount <span class="status-pill">Resolved</span></h2>
+    <p class="caption">
+      The Yale AI Club asked for 20 discounted hoodies, but only 8 were in stock.
+      Accounting recommended a specific 10% discount; a human then approved it for
+      exactly the 8 units actually on hand, explicitly declining to promise the
+      unconfirmed remaining 12. Customer Service drafted the honest response reflecting
+      that scope, and the ticket was marked resolved.
+    </p>
+    <img src="resolved_board_images/ticket_103.png" alt="Dashboard showing ticket 103 resolved, with Clark, Ledger, and Sterling's summary cards">
+  </div>
+
+</main>
+
+</body>
+</html>
